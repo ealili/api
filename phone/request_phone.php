@@ -12,13 +12,17 @@
 
     $phone = new Phone($db);
 
-    // read all phones
-    $result = $phone->read();
+    // get the parameter
+    $id = isset($_GET['id']) ? $_GET['id'] : die();
+
+    // Get a single phone object based on 'id' that is passed
+    $result = $phone->read_single_phone($id);
+
 
     // Get row count
     $num = $result->rowCount();
 
-    // Check if there is any post
+    // Check if there is a phone
     if ($num > 0) {
         // Post array
         $phone_arr = array();

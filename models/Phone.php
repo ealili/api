@@ -63,4 +63,18 @@
             return $stmt;
         }
 
+        // Get single type company
+        public function read_single_phone($phoneId)
+        {
+            $query = "SELECT * FROM Phone p, Display d, Camera c " .
+                "WHERE p.display_id = d.display_id " .
+                "AND p.camera_id = c.camera_id AND id = \"" . $phoneId . "\";";
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // Execute query
+            $stmt->execute();
+
+            return $stmt;
+        }
     }

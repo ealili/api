@@ -11,20 +11,19 @@
     $db = $database->connect();
 
     $phone = new Phone($db);
-    // Blog post query
 
+    // Get the parameter
     $mname = isset($_GET['mname']) ? $_GET['mname'] : die();
 
+    // Get phones of a specific company
     $result = $phone->read_single($mname);
-
 
 
     // Get row count
     $num = $result->rowCount();
 
-    // Check if there is any post
+    // Check if there is any phone
     if ($num > 0) {
-        // Post array
         $phone_arr = array();
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -48,7 +47,7 @@
                 'mainCamera' => $mainCamera
             );
 
-            // Push to "data"
+            // Push
             array_push($phone_arr, $phone_item);
         }
 
