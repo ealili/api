@@ -16,7 +16,7 @@
     $mname = isset($_GET['mname']) ? $_GET['mname'] : die();
 
     // Get phones of a specific company
-    $result = $phone->read_single($mname);
+    $result = $phone->getCompanyPhones($mname);
 
 
     // Get row count
@@ -30,8 +30,11 @@
             extract($row);
             $phone_item = array(
                 'id' => $id,
-                'display_id' => $display_id,
-                'camera_id' => $camera_id,
+                'displayType' => $displayType,
+                'displayResolution' => $displayResolution,
+                'displaySize' => $displaySize,
+                'selfieCamera' => $selfieCamera,
+                'mainCamera' => $mainCamera,
                 'mname' => $mname,
                 'name' => $name,
                 'technology' => $technology,
@@ -39,12 +42,7 @@
                 'sound' => $sound,
                 'os' => $os,
                 'battery' => $battery,
-                'imgSource' => $imgSource,
-                'displayType' => $displayType,
-                'displayResolution' => $displayResolution,
-                'displaySize' => $displaySize,
-                'selfieCamera' => $selfieCamera,
-                'mainCamera' => $mainCamera
+                'imgSource' => $imgSource
             );
 
             // Push

@@ -12,23 +12,25 @@
 
     $phone = new Phone($db);
 
-    // read all phones
-    $result = $phone->read();
+    // Get all phones
+    $result = $phone->readAll();
 
     // Get row count
     $num = $result->rowCount();
 
-    // Check if there is any post
+    // Check if there is any phone
     if ($num > 0) {
-        // Post array
         $phone_arr = array();
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
             $phone_item = array(
                 'id' => $id,
-                'display_id' => $display_id,
-                'camera_id' => $camera_id,
+                'displayType' => $displayType,
+                'displayResolution' => $displayResolution,
+                'displaySize' => $displaySize,
+                'selfieCamera' => $selfieCamera,
+                'mainCamera' => $mainCamera,
                 'mname' => $mname,
                 'name' => $name,
                 'technology' => $technology,
@@ -36,12 +38,7 @@
                 'sound' => $sound,
                 'os' => $os,
                 'battery' => $battery,
-                'imgSource' => $imgSource,
-                'displayType' => $displayType,
-                'displayResolution' => $displayResolution,
-                'displaySize' => $displaySize,
-                'selfieCamera' => $selfieCamera,
-                'mainCamera' => $mainCamera
+                'imgSource' => $imgSource
             );
 
             // Push

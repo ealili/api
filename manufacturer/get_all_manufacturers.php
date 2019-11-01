@@ -21,12 +21,13 @@
     // Check if there is any manufacturer
     if ($num > 0) {
         // manufacturer array
-        $manArray = array();
+        $manArray  = array();
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
             $manItem = array(
-                "mname" => $mname
+                "mname" => $mname,
+                "headquarters" => $headquarters
             );
 
             // Push
@@ -37,6 +38,6 @@
         echo json_encode($manArray);
 
     } else {
-        // No companies
-        echo json_encode(array('message' => 'No company names found!'));
+        // No manufacturers found
+        echo json_encode(array('message' => 'No manufacturer names found!'));
     }
