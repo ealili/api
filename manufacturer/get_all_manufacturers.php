@@ -27,7 +27,6 @@
             extract($row);
             $manItem = array(
                 "mname" => $mname,
-                "headquarters" => $headquarters
             );
 
             // Push

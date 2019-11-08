@@ -39,6 +39,7 @@
                 'mname' => $mname,
                 'name' => $name,
                 'technology' => $technology,
+                'productionYear' => $productionYear,
                 'weight' => $weight,
                 'sound' => $sound,
                 'os' => $os,
@@ -54,6 +55,6 @@
         echo json_encode($phone_arr);
 
     } else {
-        // No phones
-        echo json_encode(array('message' => 'No phones found!'));
+        // No phone
+        echo json_encode(array());
     }

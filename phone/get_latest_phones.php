@@ -12,12 +12,8 @@
 
     $phone = new Phone($db);
 
-    // Get the parameter
-    $mname = isset($_GET['mname']) ? $_GET['mname'] : die();
-
-    // Get phones of a specific company
-    $result = $phone->getCompanyPhones($mname);
-
+    // Get all phones
+    $result = $phone->readLatestPhones();
 
     // Get row count
     $num = $result->rowCount();
@@ -37,8 +33,8 @@
                 'mainCamera' => $mainCamera,
                 'mname' => $mname,
                 'name' => $name,
+                'prodcutionYear' => $productionYear,
                 'technology' => $technology,
-                'productionYear' => $productionYear,
                 'weight' => $weight,
                 'sound' => $sound,
                 'os' => $os,

@@ -15,7 +15,8 @@
     // Instantiate phone object
     $phone = new Phone($db);
 
-    $phone->id = $_POST['id'];
+    $stripped = preg_replace('/\s+/', '', $_POST['name']);
+    $phone->id = lcfirst($stripped);
     $phone->displayType = $_POST['displayType'];
     $phone->displayResolution = $_POST['displayResolution'];
     $phone->displaySize = $_POST['displaySize'];
@@ -26,6 +27,7 @@
     $phone->technology = $_POST['technology'];
     $phone->weight = $_POST['weight'];
     $phone->sound = $_POST['sound'];
+    $phone->productionYear = $_POST['productionYear'];
     $phone->os = $_POST['os'];
     $phone->battery = $_POST['battery'];
     $phone->imgSource = $_POST['imgSource'];
@@ -38,9 +40,8 @@
         echo json_encode(
             array('message' => 'Phone added!')
         );
+        header("Location: http://localhost:3000/admin");
     } else {
-        echo json_encode(
-            array('message' => 'Phone has not been added!')
-        );
+        header("Location: http://localhost:3000/phones       ");
     }
 

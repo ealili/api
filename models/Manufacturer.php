@@ -20,7 +20,7 @@
         public function readManufacturerNames()
         {
 
-            $query = "SELECT * from manufacturer";
+            $query = "SELECT mname from manufacturer";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
 

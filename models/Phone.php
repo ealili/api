@@ -14,9 +14,11 @@
         public $displayType;
         public $displayResolution;
         public $displaySize;
+        public $productionYear;
         public $selfieCamera;
         public $mainCamera;
         private $conn;
+
 
 
         // constructor with DB
@@ -37,6 +39,17 @@
             return $stmt;
         }
 
+        // read latest phones
+        public function readLatestPhones()
+        {
+            $query = "SELECT * FROM Phone WHERE productionYear = 2019 ";
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            // Execute query
+            $stmt->execute();
+            return $stmt;
+        }
+
         // read single phone
         public function readSinglePhone($id)
         {
@@ -50,11 +63,11 @@
         }
 
 
-        // read single phone
+        // read company phones
         public function getCompanyPhones($mname)
         {
             {
-                $query = "SELECT * FROM Phone WHERE mname = \"" . $mname . "\";";
+                $query = "SELECT * FROM Phone WHERE mname = \"" . $mname . "\" ORDER BY productionYear DESC ;";
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
                 // Execute query
@@ -71,7 +84,7 @@
             :id, displayType = :displayType, 
             displaySize = :displaySize, selfieCamera = :selfieCamera, displayResolution = :displayResolution, mainCamera = :mainCamera,
             mname = :mname, name = :name, technology = :technology, weight = :weight, sound = :sound, 
-            os = :os, battery = :battery, imgSource = :imgSource';
+            os = :os, productionYear = :productionYear, battery = :battery, imgSource = :imgSource';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -89,6 +102,7 @@
             $this->weight = htmlspecialchars(strip_tags($this->weight));
             $this->sound = htmlspecialchars(strip_tags($this->sound));
             $this->os = htmlspecialchars(strip_tags($this->os));
+            $this->productionYear = htmlspecialchars(strip_tags($this->productionYear));
             $this->battery = htmlspecialchars(strip_tags($this->battery));
             $this->imgSource = htmlspecialchars(strip_tags($this->imgSource));
 
@@ -106,6 +120,7 @@
             $stmt->bindParam(':weight', $this->weight);
             $stmt->bindParam(':sound', $this->sound);
             $stmt->bindParam(':os', $this->os);
+            $stmt->bindParam(':productionYear', $this->productionYear);
             $stmt->bindParam(':battery', $this->battery);
             $stmt->bindParam(':imgSource', $this->imgSource);
 
