@@ -33,15 +33,13 @@
     $phone->imgSource = $_POST['imgSource'];
 
 
-
-
     //create phone
-    if($phone->create()) {
+    if ($phone->create()) {
         echo json_encode(
             array('message' => 'Phone added!')
         );
         header("Location: http://localhost:3000/admin");
     } else {
-        header("Location: http://localhost:3000/phones       ");
+        header("Location: http://localhost:3000/phones");
     }
 
