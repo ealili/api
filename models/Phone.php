@@ -31,7 +31,7 @@
         // read all phones
         public function readAll()
         {
-            $query = "SELECT * FROM Phone";
+            $query = "SELECT * FROM phone";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
             // Execute query
@@ -42,7 +42,7 @@
         // read latest phones
         public function readLatestPhones()
         {
-            $query = "SELECT * FROM Phone WHERE productionYear = 2019 ";
+            $query = "SELECT * FROM phone WHERE productionYear = 2019 ";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
             // Execute query
@@ -54,7 +54,7 @@
         public function readSinglePhone($id)
         {
 
-            $query = "SELECT * FROM Phone WHERE id = \"" . $id . "\";";
+            $query = "SELECT * FROM phone WHERE id = \"" . $id . "\";";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
             // Execute query
@@ -67,7 +67,7 @@
         public function getCompanyPhones($mname)
         {
             {
-                $query = "SELECT * FROM Phone WHERE mname = \"" . $mname . "\" ORDER BY productionYear DESC ;";
+                $query = "SELECT * FROM phone WHERE mname = \"" . $mname . "\" ORDER BY productionYear DESC ;";
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
                 // Execute query
@@ -80,7 +80,7 @@
         public function create()
         {
             // Create query
-            $query = 'INSERT INTO Phone SET id = 
+            $query = 'INSERT INTO phone SET id = 
             :id, displayType = :displayType, 
             displaySize = :displaySize, selfieCamera = :selfieCamera, displayResolution = :displayResolution, mainCamera = :mainCamera,
             mname = :mname, name = :name, technology = :technology, weight = :weight, sound = :sound, 
