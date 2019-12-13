@@ -24,7 +24,7 @@ $administrator = new Administrator($db);
 /* $administrator->username=data*/
 $data = json_decode(file_get_contents("php://input"));
 
-$result = $administrator->readAdmin($data->username, $data->password);
+$result = $administrator->readAdmin($data->username, md5($data->password));
 
 if ($result->rowCount() != 0) {
     // Post array
