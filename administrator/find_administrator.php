@@ -1,10 +1,11 @@
 <?php
-
 // Headers
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST, GET');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
+session_start();
 
 include_once '../config/Database.php';
 include_once '../models/Administrator.php';
@@ -32,11 +33,15 @@ if ($result->rowCount() != 0) {
 
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
+
         $admin_item = array(
             'name' => $name,
             'username' => $username,
-            'password' => $password
+            //'password' => $password
+            //setcookie("username", $username, time()+ 10)
+            $_SESSION['newsession']=$username
         );
+        $_SESSION['newsession']=$username;
 
         // Push
         array_push($admin_array, $admin_item);
