@@ -39,9 +39,9 @@ if ($result->rowCount() != 0) {
             'username' => $username,
             //'password' => $password
             //setcookie("username", $username, time()+ 10)
-            $_SESSION['newsession']=$username
+            $_SESSION['user'] = $username
         );
-        $_SESSION['newsession']=$username;
+        $_SESSION['user'] = $username;
 
         // Push
         array_push($admin_array, $admin_item);
