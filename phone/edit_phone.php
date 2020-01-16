@@ -15,15 +15,14 @@ $db = $database->connect();
 // Instantiate phone object
 $phone = new Phone($db);
 
-$stripped = preg_replace('/\s+/', '', $_POST['name']);
-$phone->id = lcfirst($stripped);
+$phone->id = $_POST['id'];
 $phone->displayType = $_POST['displayType'];
 $phone->displayResolution = $_POST['displayResolution'];
 $phone->displaySize = $_POST['displaySize'];
 $phone->selfieCamera = $_POST['selfieCamera'];
 $phone->mainCamera = $_POST['mainCamera'];
-$phone->mname = $_POST['mname'];
-$phone->name = $_POST['name'];
+//$phone->mname = $_POST['mname'];
+//$phone->name = $_POST['name'];
 $phone->technology = $_POST['technology'];
 $phone->weight = $_POST['weight'];
 $phone->sound = $_POST['sound'];

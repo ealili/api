@@ -10,7 +10,6 @@
 
 
         // constructor with DB
-
         public function __construct($db)
         {
             $this->conn = $db;
