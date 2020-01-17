@@ -188,4 +188,22 @@ class Phone
 
         return false;
     }
+
+    public function delete($id)
+    {
+        $query = "DELETE FROM phone WHERE id = \"" . $id . "\" ;";
+
+        // Prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // Execute query
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        // Print error if something goes wrong
+        printf("Error: %s.\n", $stmt->error);
+
+        return false;
+    }
 }
