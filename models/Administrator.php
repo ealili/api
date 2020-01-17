@@ -24,4 +24,34 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function readAllAdmins()
+        {
+            //query to select the row if admin exists
+            $query = "SELECT * FROM administrator ";
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            // Execute query
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function remove($username)
+        {
+            //query to delete admin
+            $query = "DELETE FROM administrator WHERE username = \"" . $username . "\" ;";
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // Execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+
+            return false;
+        }
     }
