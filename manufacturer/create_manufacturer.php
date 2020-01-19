@@ -11,7 +11,6 @@
     $database = new Database();
     $db = $database->connect();
 
-    // Instantiate blog post object
     $manufacturer = new Manufacturer($db);
 
     // Get raw posted data
@@ -20,7 +19,7 @@
     $manufacturer->headquarters = $data->headquarters;
     $manufacturer->mname = $data->mname;
 
-    // Create Category
+    // Create Manufacturer
     if($manufacturer->create()) {
         echo json_encode(
             array('message' => 'Category Created')

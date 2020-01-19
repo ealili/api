@@ -12,12 +12,10 @@ include_once '../models/Administrator.php';
 $database = new Database();
 $db = $database->connect();
 
-// Instantiate phone object
+// Instantiate administrator object
 $administrator = new Administrator($db);
 
-//$username = isset($_GET['username']) ? $_GET['username'] : die();
-$username = $_POST['username'] ;
-
+$username = $_POST['username'];
 
 if ($administrator->remove($username)) {
     echo json_encode(

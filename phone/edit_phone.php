@@ -12,7 +12,6 @@ include_once '../models/Phone.php';
 $database = new Database();
 $db = $database->connect();
 
-// Instantiate phone object
 $phone = new Phone($db);
 
 $phone->id = $_POST['id'];
@@ -21,8 +20,6 @@ $phone->displayResolution = $_POST['displayResolution'];
 $phone->displaySize = $_POST['displaySize'];
 $phone->selfieCamera = $_POST['selfieCamera'];
 $phone->mainCamera = $_POST['mainCamera'];
-//$phone->mname = $_POST['mname'];
-//$phone->name = $_POST['name'];
 $phone->technology = $_POST['technology'];
 $phone->weight = $_POST['weight'];
 $phone->sound = $_POST['sound'];
@@ -32,7 +29,6 @@ $phone->battery = $_POST['battery'];
 $phone->imgSource = $_POST['imgSource'];
 
 
-//create phone
 if ($phone->edit()) {
     echo json_encode(
         array('message' => 'Phone updated!')

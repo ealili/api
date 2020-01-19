@@ -12,7 +12,6 @@
     $database = new Database();
     $db = $database->connect();
 
-    // Instantiate phone object
     $phone = new Phone($db);
 
     $stripped = preg_replace('/\s+/', '', $_POST['name']);

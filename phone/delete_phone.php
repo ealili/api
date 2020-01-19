@@ -12,7 +12,6 @@ include_once '../models/Phone.php';
 $database = new Database();
 $db = $database->connect();
 
-// Instantiate phone object
 $phone = new Phone($db);
 
 //$id = isset($_GET['id']) ? $_GET['id'] : die();

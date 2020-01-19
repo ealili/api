@@ -1,42 +1,42 @@
 <?php
-    // Headers
-    header('Access-Control-Allow-Origin: *');
-    header('Content-Type: application/json');
+// Headers
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
-    include_once '../config/Database.php';
-    include_once '../models/Manufacturer.php';
+include_once '../config/Database.php';
+include_once '../models/Manufacturer.php';
 
-    // Instantiate DB & connect
-    $database = new Database();
-    $db = $database->connect();
+// Instantiate DB & connect
+$database = new Database();
+$db = $database->connect();
 
-    $manufacturer = new manufacturer($db);
+$manufacturer = new manufacturer($db);
 
-    $result = $manufacturer->readManufacturerNames();
+$result = $manufacturer->readManufacturerNames();
 
 
-    // Get row count
-    $num = $result->rowCount();
+// Get row count
+$num = $result->rowCount();
 
-    // Check if there is any manufacturer
-    if ($num > 0) {
-        // manufacturer array
-        $manArray  = array();
+// Check if there is any manufacturer
+if ($num > 0) {
+    // manufacturer array
+    $manArray = array();
 
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            extract($row);
-            $manItem = array(
-                "mname" => $mname,
-            );
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+        $manItem = array(
+            "mname" => $mname,
+        );
 
-            // Push
-            array_push($manArray, $manItem);
-        }
-
-        // Turn to JSON & output
-        echo json_encode($manArray);
-
-    } else {
-        // No manufacturers found
-        echo json_encode(array('message' => 'No manufacturer names found!'));
+        // Push
+        array_push($manArray, $manItem);
     }
+
+    // Turn to JSON & output
+    echo json_encode($manArray);
+
+} else {
+    // No manufacturers found
+    echo json_encode(array('message' => 'No manufacturer names found!'));
+}

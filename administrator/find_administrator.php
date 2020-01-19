@@ -17,12 +17,6 @@ $db = $database->connect();
 
 $administrator = new Administrator($db);
 
-
-// get the parameter
-// $username = isset($_POST['username']) ? $_POST['username'] : die();
-// $password = isset($_POST['password']) ? $_POST['password'] : die();
-
-/* $administrator->username=data*/
 $data = json_decode(file_get_contents("php://input"));
 
 $result = $administrator->readAdmin($data->username, md5($data->password));

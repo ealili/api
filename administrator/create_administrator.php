@@ -12,14 +12,14 @@ include_once '../models/Administrator.php';
 $database = new Database();
 $db = $database->connect();
 
-// Instantiate phone object
+// Instantiate Administrator object
 $administrator = new Administrator($db);
 
 $administrator->name = $_POST['name'];
 $administrator->username = $_POST['username'];
 $administrator->password = md5($_POST['password']);
 
-//create phone
+// Create Administrator
 if ($administrator->create()) {
     echo json_encode(
         array('message' => 'Administrator added!')
