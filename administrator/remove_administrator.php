@@ -6,24 +6,25 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 include_once '../config/Database.php';
-include_once '../models/Phone.php';
+include_once '../models/Administrator.php';
 
 // Instantiate DB & connect
 $database = new Database();
 $db = $database->connect();
 
 // Instantiate phone object
-$phone = new Phone($db);
+$administrator = new Administrator($db);
 
-//$id = isset($_GET['id']) ? $_GET['id'] : die();
-$id = $_POST['id'] ? $_POST['id'] : die();
+//$username = isset($_GET['username']) ? $_GET['username'] : die();
+$username = $_POST['username'] ;
 
-if ($phone->delete($id)) {
+
+if ($administrator->remove($username)) {
     echo json_encode(
-        array('message' => 'Phone deleted!')
+        array('message' => 'User removed!')
     );
     header("Location: http://localhost:3000/admin");
 } else {
-    header("Location: http://localhost:3000/admin/delete-phone");
+    header("Location: http://localhost:3000/admin/remove-administrator.php");
 }
 
