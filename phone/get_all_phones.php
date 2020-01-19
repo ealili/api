@@ -33,7 +33,7 @@
                 'mainCamera' => $mainCamera,
                 'mname' => $mname,
                 'name' => $name,
-                'prodcutionYear' => $productionYear,
+                'productionYear' => $productionYear,
                 'technology' => $technology,
                 'weight' => $weight,
                 'sound' => $sound,
