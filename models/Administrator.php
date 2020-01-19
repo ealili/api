@@ -54,4 +54,33 @@
 
             return false;
         }
+
+        public function create()
+        {
+            // Create query
+            $query = 'INSERT INTO administrator SET name = :name, username = :username, password = :password';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // Clean data
+            $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->username = htmlspecialchars(strip_tags($this->username));
+            $this->password = htmlspecialchars(strip_tags($this->password));
+
+            // Bind data
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':username', $this->username);
+            $stmt->bindParam(':password', $this->password);
+
+            // Execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+
+            return false;
+        }
     }
